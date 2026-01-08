@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Vehicle;
+
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,6 +25,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'last_name',
         'email',
         'password',
     ];
@@ -60,5 +65,10 @@ class User extends Authenticatable
             ->take(2)
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
+    }
+
+    // User tiene muchos vehiculos. Se usa así porque el vehiculo tiene la id del user como Foreign Key.
+    public function vehicles(){
+        return $this->hasMany(Vehicle::class);
     }
 }
