@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Users\Create;
+
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -36,3 +38,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('users', Index::class)->name("users.index");
+Route::get('users/create', Create::class)->name('users.create');
