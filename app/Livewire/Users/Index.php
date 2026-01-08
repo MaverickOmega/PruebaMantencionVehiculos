@@ -8,12 +8,11 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
-    public $users;
-    public function mount(){
-        $this->users = User::all();
-    }
+    use WithPagination;
     public function render()
     {
-        return view('livewire.users.index');
+        return view('livewire.users.index', [
+            'users' => User::paginate(10)
+        ]);
     }
 }
