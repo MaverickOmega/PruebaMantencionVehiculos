@@ -21,6 +21,6 @@ Proyecto desarrollado en Laravel 12.
 
 ### Restricciones de base de datos
 
--No se permite eliminar un usuario si tiene vehículos asociados ('ON DELETE RESTRICT').
+- No se permite eliminar un usuario si tiene vehículos asociados ('ON DELETE RESTRICT').
 
--Si el ID de un usuario cambia, se actualiza en los vehículos ('ON UPDATE CASCADE').
+- Si el ID de un usuario cambia, se actualiza en los vehículos ('ON UPDATE CASCADE').
