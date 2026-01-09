@@ -30,6 +30,7 @@ Proyecto desarrollado en Laravel 12.
 - CRUD de usuarios (Livewire)
   - Crear usuarios con validaciones
   - Listar usuarios
+  - Editar usuarios existentes
 - Validaciones en tiempo real usando Livewire y Livewire Forms'
 - Restricciones de integridad referencial en base de datos.
 
@@ -37,7 +38,15 @@ Proyecto desarrollado en Laravel 12.
 
 - Se usa Livewire Forms para encapsular el estado y las validaciones del formulario de usuarios.
 - El formulario 'UserForm' centraliza:
- - Estado de los campos ('name', 'last_name', 'email')
+ - Estado del formulario ('name', 'last_name', 'email')
  - Reglas de validación
- - Lógica de persistencia ('store')
-- El componente Livewire 'Users/Create' delega la lógica del formulario al Form, manteniendo el componente liviano y enfocado en la interacción.
+ - Lógica de persistencia para Create y Update
+
+Esta separación permite:
+- Reducir la responsabilidad de los componentes Livewire ('Create', 'Update').
+- Reutilizar validaciones y lógica entre creación y edición.
+- Facilitar el mantenimiento y escabilidade del código.
+
+#### Validación de edicion de usuarios.
+
+Durante la edición de usuarios, se implementó una validación condicional para el campo email, permitiendo mantener el mismo correo sin disparar la restricción de unicidad. Se logró utilizando reglas de validación dinámicas que ignoran el ID del usuario actual al validar el campo email.
