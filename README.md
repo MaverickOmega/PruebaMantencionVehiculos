@@ -24,3 +24,11 @@ Proyecto desarrollado en Laravel 12.
 - No se permite eliminar un usuario si tiene vehículos asociados ('ON DELETE RESTRICT').
 
 - Si el ID de un usuario cambia, se actualiza en los vehículos ('ON UPDATE CASCADE').
+
+## Funcionalidades implementadas.
+
+- CRUD de usuarios (Livewire)
+  - Crear usuarios con validaciones
+  - Listar usuarios
+- Validaciones en tiempo real usando Livewire
+- Restricciones de integridad referencial en base de datos.
