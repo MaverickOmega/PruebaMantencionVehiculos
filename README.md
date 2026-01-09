@@ -2,7 +2,8 @@
 
 ## Tecnologías usadas
 
-- Laravel 12.
+- Laravel 12
+- Livewire 3.7
 - Livewire Forms
 - Eloquent ORM
 - SQLite / MySQL
@@ -42,14 +43,14 @@ El módulo de vehículos se encuentra **parcialmente implementado**, cubriendo l
 
 ## Funcionalidades implementadas.
 
-- CRUD de usuarios (Livewire)
+- CRUD de usuarios (Create, Read y Update)
   - Crear usuarios con validaciones
   - Listar usuarios
   - Editar usuarios existentes
 - Validaciones en tiempo real usando Livewire y Livewire Forms'
 - Restricciones de integridad referencial en base de datos.
 
-- CRUD de vehículos (parcial):
+- CRUD de vehículos (Create, Read y Update):
  - Crear vehículos con validaciones
  - Listar vehículos junto el nombre completo del dueño.
 - Validaciones de integridad referencial en base de datos.
@@ -65,7 +66,7 @@ El módulo de vehículos se encuentra **parcialmente implementado**, cubriendo l
 - El formulario 'VehicleForm' centraliza:
  - Estado del formulario ('brand', 'model', 'license_plate', 'year', 'price', 'user_id')
  - Reglas de validación
- - Lógica de persistencia para creación de vehículos
+ - Lógica de persistencia para creación y edición de vehículos
  - Carga de dueños disponibles mediante relaciones Eloquent
 
 Esta separación permite:
@@ -76,3 +77,5 @@ Esta separación permite:
 ### Validación de edicion de usuarios.
 
 Durante la edición de usuarios, se implementó una validación condicional para el campo email, permitiendo mantener el mismo correo sin disparar la restricción de unicidad. Se logró utilizando reglas de validación dinámicas que ignoran el ID del usuario actual al validar el campo email.
+
+Durante la edición de vehículos, se implementó una validación condicional para el campo license_plate (la patente), permitiendo mantener la misma patente sin disparar la restricción de unicidad. Esto se logró ignorando el ID del vehículo actual en la regla unique.
