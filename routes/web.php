@@ -7,6 +7,7 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
 use App\Livewire\Users\Index;
+use App\Livewire\Users\Update;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -39,3 +40,4 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('users', Index::class)->name("users.index");
 Route::get('users/create', Create::class)->name('users.create');
+Route::get('users/{user}/edit', Update::class)->name('users.edit');

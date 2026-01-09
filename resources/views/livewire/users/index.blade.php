@@ -20,7 +20,7 @@
             </div>
         </div>
     @endif
-    <a href="{{ route('users.create') }}" class="font-medium text-primary underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark">
+    <a href="{{ route('users.create') }}" class="whitespace-nowrap bg-transparent rounded-radius border border-primary px-4 py-2 text-sm font-medium tracking-wide text-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:border-primary-dark dark:text-primary-dark dark:focus-visible:outline-primary-dark">
         Crear un usuario
     </a>
     <div class="overflow-hidden w-full overflow-x-auto rounded-radius border border-outline dark:border-outline-dark">
@@ -31,6 +31,7 @@
                     <th scope="col" class="p-4">Nombre</th>
                     <th scope="col" class="p-4">Apellidos</th>
                     <th scope="col" class="p-4">Correo</th>
+                    <th scope="col" class="p-4">Acciones</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-outline dark:divide-outline-dark">
@@ -40,6 +41,11 @@
                         <td class="p-4">{{ $user->name }}</td>
                         <td class="p-4">{{ $user->last_name }}</td>
                         <td class="p-4">{{ $user->email }}</td>
+                        <td class="p-4">
+                            <a href="{{ route('users.edit', $user ) }}" wire:navigate>
+                                <button type="button" class="whitespace-nowrap rounded-radius bg-surface-alt border border-surface-alt px-4 py-2 text-sm font-medium tracking-wide text-on-surface-strong transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-alt active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-surface-dark-alt dark:border-surface-dark-alt dark:text-on-surface-dark-strong dark:focus-visible:outline-surface-dark-alt">Editar</button>
+                            </a>
+                        </td>
                     </tr>
                 @empty
                     <tr>
