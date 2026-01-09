@@ -14,7 +14,8 @@ class UserForm extends Form
     public $name;
     public $last_name=null;
     public $email;
-    protected function rules(){
+     //Validaciones: Esos son los que muestran mensajes del por qué no se creó el usuario.
+    protected function rules() : array{
         return[
             'name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -23,16 +24,7 @@ class UserForm extends Form
             ],
         ];
     }
-    //Validaciones: Esos son los que muestran mensajes del por qué no se creó el usuario.
-    /*
-    #[Validate('required|string|max:255')]
-    public $name;
-    #[Validate('required|string|max:255')]
-    public $last_name=null;
-    #[Validate('required|string|email|max:255|unique:users,email')]
-    public $email;
-    */
-
+   
     public function setUser(User $user){
         $this->user = $user;     // Se escoge cada una de las propiedades del validate y las settea con lo que venga del User.
         $this->name = $user->name;

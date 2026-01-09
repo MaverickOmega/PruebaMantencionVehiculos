@@ -1,13 +1,16 @@
 <?php
 
-use App\Livewire\Users\Create;
+use App\Livewire\Users\Create as UsersCreate;
 
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
-use App\Livewire\Users\Index;
-use App\Livewire\Users\Update;
+use App\Livewire\Users\Index as UsersIndex;
+use App\Livewire\Users\Update as UserUpdate;
+use App\Livewire\Vehicles\Index as VehiclesIndex;
+use App\Livewire\Vehicles\Create as VehiclesCreate;
+use App\Livewire\Vehicles\Update as VehiclesUpdate;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -38,6 +41,13 @@ Route::middleware(['auth'])->group(function () {
         ->name('two-factor.show');
 });
 
-Route::get('users', Index::class)->name("users.index");
-Route::get('users/create', Create::class)->name('users.create');
-Route::get('users/{user}/edit', Update::class)->name('users.edit');
+//Usuarios
+Route::get('users', UsersIndex::class)->name("users.index");
+Route::get('users/create', UsersCreate::class)->name('users.create');
+Route::get('users/{user}/edit', UserUpdate::class)->name('users.edit');
+
+//Vehiculos
+
+Route::get('vehicles', VehiclesIndex::class)->name("vehicles.index");
+Route::get('vehicles/create', VehiclesCreate::class)->name('vehicles.create');
+Route::get('vehicles/{vehicle}/edit', VehiclesUpdate::class)->name('vehicles.edit');

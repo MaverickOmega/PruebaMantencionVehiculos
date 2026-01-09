@@ -18,6 +18,13 @@ class Vehicle extends Model
         'user_id',
     ];
 
+    // Cuando se use el modelo, esos campos se traten como int
+    protected $casts = [
+        'year' => 'integer',
+        'price' => 'integer',
+        'user_id' => 'integer',
+    ];
+
     // Vehiculo tiene dueños que son los users.
 
     public function owner(){
