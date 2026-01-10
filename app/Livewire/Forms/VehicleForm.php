@@ -4,9 +4,12 @@ namespace App\Livewire\Forms;
 
 use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\VehicleOwnerHistory;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
+
+use function Symfony\Component\Clock\now;
 
 class VehicleForm extends Form
 {
@@ -63,8 +66,8 @@ class VehicleForm extends Form
     public function store() : void{
         $this->validate();
 
-        // Este es el insert en la tabla Vehiculos.
-        Vehicle::create([
+        // Este es el insert en la tabla Vehiculos. Se captura el Vehiculo para crear su historial inicial.
+        $vehicle = Vehicle::create([
             'brand' => $this->brand,
             'model' => $this->model,
             'license_plate' => $this->license_plate,
@@ -72,9 +75,22 @@ class VehicleForm extends Form
             'price' => $this->price,
             'user_id' => $this->user_id,
         ]);
+
+        //En el momento en que se crea el vehiculo, se registra un historial inicial del dueño del vehículo.
+
+        VehicleOwnerHistory::create([
+            'vehicle_id'=> $vehicle->id,
+            'user_id' => $this->user_id,
+            'assigned_at' => now(),
+            'unassigned_at' => null,
+        ]);
     }
-    public function update(){
+    public function update() : void{
         $this->validate();
+
+        //Se captura el antiguo dueño para actualizar el historial en caso de que el auto tenga nuevo dueño.
+        $oldUserId = $this->vehicle->user_id;
+
         // Trae todas las propiedades públicas de ese método. Actualiza el usuario con todas las propiedades.
         $this->vehicle->update([
             'brand' => $this->brand,
@@ -84,5 +100,21 @@ class VehicleForm extends Form
             'price' => $this->price,
             'user_id' => $this->user_id,
         ]);
+
+        //Si cambió el dueño, se actualiza el historial.
+        if ($oldUserId != $this->user_id){
+            // Se cierra el historia anterior.
+            VehicleOwnerHistory::where('vehicle_id', $this->vehicle->id)
+                ->whereNull('unassigned_at')
+                ->update(['unassigned_at' => now()]);
+
+            // Crea un nuevo historial
+            VehicleOwnerHistory::create([
+                'vehicle_id'=> $this->vehicle->id,
+                'user_id' => $this->user_id,
+                'assigned_at' => now(),
+                'unassigned_at' => null,
+            ]);
+        }
     }
 }

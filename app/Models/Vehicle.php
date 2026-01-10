@@ -18,7 +18,7 @@ class Vehicle extends Model
         'user_id',
     ];
 
-    // Cuando se use el modelo, esos campos se traten como int
+    // Cuando se use el modelo, esos campos se tratan como int
     protected $casts = [
         'year' => 'integer',
         'price' => 'integer',

@@ -6,7 +6,7 @@
 - Livewire 3.7
 - Livewire Forms
 - Eloquent ORM
-- SQLite / MySQL
+- MySQL
 - Blade
 
 ## Requisitos
@@ -79,3 +79,14 @@ Esta separación permite:
 Durante la edición de usuarios, se implementó una validación condicional para el campo email, permitiendo mantener el mismo correo sin disparar la restricción de unicidad. Se logró utilizando reglas de validación dinámicas que ignoran el ID del usuario actual al validar el campo email.
 
 Durante la edición de vehículos, se implementó una validación condicional para el campo license_plate (la patente), permitiendo mantener la misma patente sin disparar la restricción de unicidad. Esto se logró ignorando el ID del vehículo actual en la regla unique.
+
+### Histórico de dueños
+
+El sistema mantiene un registro histórico de los dueños de cada vehículo.
+Cada cambio de propietario:
+
+- Cierra el período del dueño anterior ('unassigned_at')
+- Registra el nuevo dueño con fecha de asignación ('assigned_at')
+- Garantiza que exista un único dueño actual por vehículo
+
+El histórico puede ser consultado desde la sección "Histórico".

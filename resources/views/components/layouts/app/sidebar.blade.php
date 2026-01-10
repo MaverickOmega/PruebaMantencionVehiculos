@@ -16,6 +16,7 @@
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                     <flux:navlist.item icon="user" :href="route('users.index')" :current="request()->routeIs('users.*')">Usuarios</flux:navlist.item>
                     <flux:navlist.item icon="truck" :href="route('vehicles.index')" :current="request()->routeIs('vehicles.*')">Vehiculos</flux:navlist.item>
+                    <flux:navlist.item icon="camera" :href="route('vehicle-owner-history.index')" :current="request()->routeIs('vehicle-owner-history.*')">Histórico</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

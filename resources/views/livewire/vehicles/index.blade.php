@@ -57,7 +57,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="p-4 text-center">Vehicles not found</td>
+                        <td colspan="5" class="p-4 text-center">Vehiculos no registrados</td>
                     </tr>
                 @endforelse
             </tbody>

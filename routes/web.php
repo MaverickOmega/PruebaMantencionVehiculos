@@ -11,6 +11,7 @@ use App\Livewire\Users\Update as UserUpdate;
 use App\Livewire\Vehicles\Index as VehiclesIndex;
 use App\Livewire\Vehicles\Create as VehiclesCreate;
 use App\Livewire\Vehicles\Update as VehiclesUpdate;
+use App\Livewire\VehicleOwnerHistory\Index as VehicleOwnerHistoryIndex;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -51,3 +52,7 @@ Route::get('users/{user}/edit', UserUpdate::class)->name('users.edit');
 Route::get('vehicles', VehiclesIndex::class)->name("vehicles.index");
 Route::get('vehicles/create', VehiclesCreate::class)->name('vehicles.create');
 Route::get('vehicles/{vehicle}/edit', VehiclesUpdate::class)->name('vehicles.edit');
+
+//Histórico
+
+Route::get('vehicle-owner-history', VehicleOwnerHistoryIndex::class)->name("vehicle-owner-history.index");
