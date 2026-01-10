@@ -11,7 +11,17 @@
 
 ## Requisitos
 
+- XAMPP
+- composer
+- Node.Js
+
 ## Instalación
+
+Al hacer un git clone al repositorio o descargarlo en un zip, dentro de la carpeta del proyecto, se abre una terminal y ejecuta composer install para crear la carpeta vendor/ teniendo las dependencias PHP.
+Después, crea el archivo .env con cp .env.example .env. Una vez hecho, busca la conexión del proyecto a la base de datos, el DB_CONNECTION es mysql, se descomenta el resto de sus propiedades y con el nombre de DB_DATABASE se crea la base de datos en localhost/phpmyadmin. Para eso en el XAMPP apreta los botones start de Apache y MySQL.
+Luego, en la terminal se genera la APP KEY con php artisan key:generate y se ejecutan las migraciones con php artisan migrate.
+Sigue instalar las dependencias frontend ejecutando el comando npm install.
+Para terminar, ejecuta npm run dev para tener los cambios en tiempo real, por ejemplo tener las notificaciones al crear un usuario o un vehículo y abre una nueva terminal para levantar el servidor con php artisan serve. Con eso, el proyecto funciona. Crea una cuenta nueva con un email cualquiera y puede acceder dicho proyecto.
 
 ## Decisiones de diseño
 
